@@ -1,19 +1,20 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
 
-ENTITY decode IS
+--from textbook
+
+ENTITY dec2to4 IS
     PORT (
-        w1 : IN STD_LOGIC;      
-        w0 : IN STD_LOGIC;      
+        w : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
         En : IN STD_LOGIC;
         y : OUT STD_LOGIC_VECTOR(0 TO 3)
     );
-END decode;
+END dec2to4;
 
-ARCHITECTURE Behavior OF decode IS
+ARCHITECTURE Behavior OF dec2to4 IS
     SIGNAL Enw : STD_LOGIC_VECTOR(2 DOWNTO 0);
 BEGIN
-    Enw <= En & w1 & w0;
+    Enw <= En & w;
     
     WITH Enw SELECT
         y <= "1000" WHEN "100",
